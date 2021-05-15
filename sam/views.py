@@ -5,9 +5,9 @@ from .models import Home, About, Profile, Category, Skills, Portfolio
 
 def index(request):
 
-    home = Home.objects.all()
+    home = Home.objects.latest('updated')
 
-    about = About.objects.all()
+    about = About.objects.latest('updated')
     profiles =Profile.objects.filter(about=about)
 
     categories = Category.objects.all()
