@@ -5,10 +5,10 @@ from .models import Home, About, Profile, Category, Skills, Portfolio
 
 def index(request):
 
-    home = Home.objects.latest('updated')
+    home = Home.objects.last()
 
-    about = About.objects.latest('updated')
-    profile =Profile.objects.filter(about=about)
+    about = About.objects.last()
+    profiles =Profile.objects.filter(about=about)
 
     categories = Category.objects.all()
 
@@ -17,7 +17,7 @@ def index(request):
     context = {
         'home': home,
         'about': about,
-        'profile': profile,
+        'profiles': profiles,
         'categories': categories,
         'portfolios': portfolios,
     }
